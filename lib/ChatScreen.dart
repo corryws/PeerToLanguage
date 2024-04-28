@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'Element/MessageBubble.dart';
 import 'Element/MessageInput.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
+  @override
+  _ChatScreenState createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State {
+// Lista dei messaggi nella chat
+  List<Map<String, String>> messages = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,26 +43,28 @@ class ChatScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView(
+            child: ListView.builder(
               reverse: true,
-              children: const [
-                MessageBubble(
-                  message: 'Ciao, come stai?',
-                  isMe: true,
-                  time: '10:30',
-                ),
-                MessageBubble(
-                  message: 'Sto bene, grazie!',
-                  isMe: false,
-                  time: '10:31',
-                ),
-              ],
+              itemCount: messages.length,
+              itemBuilder: (BuildContext context, int index) {
+                return MessageBubble(
+                  message: messages[index]['message']!,
+                  isMe: messages[index]['isMe'] == 'true',
+                  time: messages[index]['time']!,
+                );
+              },
             ),
           ),
           MessageInput(
             sendMessage: (message, time) {
-              print("Messaggio inviato: $message");
-              print("Orario di invio: $time");
+// Aggiungi il nuovo messaggio alla lista dei messaggi
+              setState(() {
+                messages.insert(0, {
+                  'message': message,
+                  'isMe': 'true',
+                  'time': time,
+                });
+              });
             },
           ),
         ],
