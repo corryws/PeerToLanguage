@@ -34,7 +34,9 @@ class _MessageInputState extends State<MessageInput> {
               String messageText = _controller.text;
 
               // Ottieni l'orario corrente
-              String currentTime = DateTime.now().toString();
+              String currentTime = (DateTime.now().hour.toString() +
+                  ":" +
+                  DateTime.now().minute.toString());
 
               // Invia il messaggio utilizzando la funzione passata dal widget padre
               widget.sendMessage(messageText, currentTime);

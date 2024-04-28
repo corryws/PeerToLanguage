@@ -18,24 +18,24 @@ class Home extends StatelessWidget {
               // Azione per aprire il menu
             },
           ),
-          title: Row(
+          title: const Row(
             children: [
-              const Spacer(), // Spazio per spingere il testo e l'icona a destra
-              const Text('LVL 1'),
-              const SizedBox(
+              Spacer(), // Spazio per spingere il testo e l'icona a destra
+              Text('LVL 1'),
+              SizedBox(
                   width: 8), // Spazio tra il livello e l'icona dei diamanti
               Row(
                 children: [
-                  const Icon(Icons.diamond),
-                  const SizedBox(width: 4), // Spazio tra l'icona e il testo
-                  const Text('x50'),
+                  Icon(Icons.diamond),
+                  SizedBox(width: 4), // Spazio tra l'icona e il testo
+                  Text('x50'),
                 ],
               ),
             ],
           ),
         ),
         body: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
           ),
           itemCount: 20, // Numero di elementi nella griglia
@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
               onTap: () {
                 // Azione quando l'elemento viene cliccato
               },
-              child: GridTile(
+              child: const GridTile(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -53,9 +53,8 @@ class Home extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.diamond), // Icona dei diamanti
-                        const SizedBox(
-                            width: 4), // Spazio tra l'icona e il testo
-                        const Text(
+                        SizedBox(width: 4), // Spazio tra l'icona e il testo
+                        Text(
                             '+100'), // Testo "+100" accanto all'icona dei diamanti
                       ],
                     ),

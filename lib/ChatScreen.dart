@@ -57,7 +57,7 @@ class _ChatScreenState extends State {
           ),
           MessageInput(
             sendMessage: (message, time) {
-// Aggiungi il nuovo messaggio alla lista dei messaggi
+              print(time);
               setState(() {
                 messages.insert(0, {
                   'message': message,
