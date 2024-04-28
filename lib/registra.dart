@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peertolanguage/home.dart';
 
 void main() {
   runApp(Registra());
@@ -88,6 +89,16 @@ class _RegistraState extends State<Registra> {
               const SizedBox(height: 20),
             ],
           ),
+        ),
+        bottomNavigationBar: ElevatedButton(
+          onPressed: () {
+            // Passa alla schermata di registrazione
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
+          },
+          child: Text('Next'),
         ),
       ),
     );

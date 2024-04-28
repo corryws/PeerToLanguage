@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:peertolanguage/home.dart';
 import 'package:peertolanguage/registra.dart';
 
 void main() {
