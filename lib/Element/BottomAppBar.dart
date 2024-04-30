@@ -3,6 +3,8 @@ import 'package:peertolanguage/home.dart';
 //import 'package:peertolanguage/main.dart';
 //import 'package:peertolanguage/ChatScreen.dart';
 import 'package:peertolanguage/MatchScreen.dart';
+import 'package:peertolanguage/TrophyScreen.dart';
+import 'package:peertolanguage/ProfileScreen.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
   @override
@@ -14,7 +16,10 @@ class CustomBottomAppBar extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.emoji_events),
             onPressed: () {
-              // Azione per aprire i trofei
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TrophyScreen()),
+              );
             },
           ),
           IconButton(
@@ -32,6 +37,15 @@ class CustomBottomAppBar extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => MatchScreen()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
               );
             },
           ),

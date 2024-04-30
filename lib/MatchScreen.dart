@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Importa il pacchetto per utilizzare il rootBundle
+import 'package:flutter/services.dart';
 import 'Element/BottomAppBar.dart';
+import 'ChatScreen.dart'; // Importa lo screen della chat
 
 void main() {
   runApp(MatchScreen());
@@ -11,7 +12,6 @@ class MatchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Le Tue Chat',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -27,19 +27,18 @@ class PeerToChatScreen extends StatefulWidget {
 }
 
 class _PeerToChatScreenState extends State<PeerToChatScreen> {
-  //dati fittizzi perché saranno poi in futuro rimpiazzati
-  //dai vari utenti collegati al server
   List<String> matches = [
     "corrado",
     "eros",
-    "ashain",
+    "sap0",
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Le tue Chat'),
+        title: const Text('Chat'),
+        centerTitle: true,
       ),
       body: ListView.builder(
         itemCount: matches.length,
@@ -48,9 +47,18 @@ class _PeerToChatScreenState extends State<PeerToChatScreen> {
             margin: const EdgeInsets.all(10.0),
             elevation: 5.0,
             child: ListTile(
+              onTap: () {
+                // Naviga alla schermata della chat quando si fa clic sulla corrispondenza
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ChatScreen(), //matchName: matches[index]
+                  ),
+                );
+              },
               leading: FutureBuilder<Widget>(
-                future: _loadImage(
-                    'assets/images/${matches[index]}.png'), // Carica l'immagine utilizzando il rootBundle
+                future: _loadImage('assets/images/${matches[index]}.png'),
                 builder:
                     (BuildContext context, AsyncSnapshot<Widget> snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
@@ -60,7 +68,6 @@ class _PeerToChatScreenState extends State<PeerToChatScreen> {
                     );
                   } else {
                     return CircleAvatar(
-                      // Fornisci un fallback mentre l'immagine viene caricata
                       backgroundColor: Colors.blue,
                       child: CircularProgressIndicator(),
                     );
@@ -72,17 +79,7 @@ class _PeerToChatScreenState extends State<PeerToChatScreen> {
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: const Text('Livello Chat : 1'),
-              trailing: IconButton(
-                icon: const Icon(Icons.grade),
-                onPressed: () {
-                  // Action when user likes the match
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('You liked ${matches[index]}'),
-                    ),
-                  );
-                },
-              ),
+              trailing: Icon(Icons.grade), // Rimuovi onPressed dall'icona
             ),
           );
         },
@@ -92,11 +89,8 @@ class _PeerToChatScreenState extends State<PeerToChatScreen> {
   }
 
   Future<Widget> _loadImage(String path) async {
-    final ByteData data = await rootBundle
-        .load(path); // Carica l'immagine utilizzando il rootBundle
-    final Uint8List bytes =
-        data.buffer.asUint8List(); // Converte i dati in Uint8List
-    return Image.memory(
-        bytes); // Restituisci un widget Image con i byte dell'immagine
+    final ByteData data = await rootBundle.load(path);
+    final Uint8List bytes = data.buffer.asUint8List();
+    return Image.memory(bytes);
   }
 }

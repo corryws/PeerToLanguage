@@ -38,7 +38,7 @@ class Home extends StatelessWidget {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
           ),
-          itemCount: 20, // Numero di elementi nella griglia
+          itemCount: 21, // Numero di elementi nella griglia
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
@@ -48,7 +48,12 @@ class Home extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.person),
+                    CircleAvatar(
+                      radius:
+                          30, // Modifica il raggio del CircleAvatar secondo necessità
+                      child: Icon(
+                          Icons.person), // Icona all'interno del CircleAvatar
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
