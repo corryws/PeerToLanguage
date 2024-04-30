@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:peertolanguage/main.dart';
-import 'package:peertolanguage/ChatScreen.dart';
+import 'package:peertolanguage/home.dart';
+//import 'package:peertolanguage/main.dart';
+//import 'package:peertolanguage/ChatScreen.dart';
+import 'package:peertolanguage/MatchScreen.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
   @override
@@ -20,7 +22,7 @@ class CustomBottomAppBar extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Main()),
+                MaterialPageRoute(builder: (context) => Home()),
               );
             },
           ),
@@ -29,7 +31,7 @@ class CustomBottomAppBar extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ChatScreen()),
+                MaterialPageRoute(builder: (context) => MatchScreen()),
               );
             },
           ),
