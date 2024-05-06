@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'Element/MessageBubble.dart';
 import 'Element/MessageInput.dart';
 
+//https://www.youtube.com/watch?v=zwrC2vigls8&t=43s
+
 class ChatScreen extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
