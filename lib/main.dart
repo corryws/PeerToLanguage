@@ -48,24 +48,24 @@ class _IntroScreenState extends State<IntroScreen> {
             },
             children: [
               IntroPage(
-                title: 'Pagina 1',
+                title: 'Welcome',
                 description:
-                    'Le lingue Imparerai imparando e imparando imparerai!',
+                    'Benvenuto su LIPA, dove imparerai imparando e imparando imparerai le lingue che hai sempre sognato',
                 imagePath:
-                    'assets/images/pagina1.jpg', // Percorso dell'immagine per Pagina 1
+                    'assets/images/pagina1.png', // Percorso dell'immagine per Pagina 1
               ),
               IntroPage(
-                title: 'Pagina 2',
+                title: 'Find all type of People to learn!',
                 description: 'Trova il tuo HelpPeerToPeer adatto a Te!',
                 imagePath:
-                    'assets/images/pagina1.jpg', // Percorso dell'immagine per Pagina 2
+                    'assets/images/pagina2.png', // Percorso dell'immagine per Pagina 2
               ),
               IntroPage(
-                title: 'Pagina 3',
+                title: 'Start to Play with US',
                 description:
                     'Divertitevi a portare quante più Chat a Livello Massimo!',
                 imagePath:
-                    'assets/images/pagina1.jpg', // Percorso dell'immagine per Pagina 3
+                    'assets/images/pagina3.png', // Percorso dell'immagine per Pagina 3
               ),
             ],
           ),
@@ -137,23 +137,22 @@ class IntroPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          /* Text(
+          Image.asset(imagePath,
+              height: 300, // Imposta l'altezza dell'immagine
+              width: double
+                  .infinity, // Imposta la larghezza dell'immagine alla larghezza massima disponibile
+              fit: BoxFit
+                  .contain //.cover, // Scala l'immagine in modo che si adatti al contenitore
+              ),
+          const SizedBox(height: 5.0),
+          Text(
             title,
             style: const TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
-          ), */
-          //const SizedBox(height: 20.0),
-          Image.asset(
-            imagePath,
-            height: 450, // Imposta l'altezza dell'immagine
-            width: double
-                .infinity, // Imposta la larghezza dell'immagine alla larghezza massima disponibile
-            fit: BoxFit
-                .cover, // Scala l'immagine in modo che si adatti al contenitore
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 5.0),
           Text(
             description,
             textAlign: TextAlign.center,
